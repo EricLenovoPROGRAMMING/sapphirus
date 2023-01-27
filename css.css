@@ -1,0 +1,176 @@
+@keyframes cleartext-animation {
+	0% {
+		opacity: 100%;
+		letter-spacing: -0.1em
+	}
+
+	90% {
+		opacity: 100%;
+		letter-spacing: 0.1em
+	}
+
+	100% {
+		opacity: 0%;
+		letter-spacing: 0.1em
+	}
+}
+
+@keyframes cleartext-animation-nofadeout {
+	0% {
+		opacity: 100%;
+		letter-spacing: -0.1em
+	}
+
+	90% {
+		opacity: 100%;
+		letter-spacing: 0.1em
+	}
+
+	100% {
+		opacity: 100%;
+		letter-spacing: 0.1em
+	}
+}
+
+@keyframes perfectClear1 {
+	0% {
+		opacity: 0%;
+		transform: rotate(720deg) scale(0)
+	}
+
+	4% {
+		opacity: 100%;
+	}
+
+	13% {
+		animation-timing-function: ease-out;
+		transform: rotate(0deg) scale(1.1)
+	}
+
+	70% {
+		opacity: 100%;
+		transform: rotate(0deg) scale(0.7)
+	}
+
+	100% {
+		opacity: 0%;
+		transform: rotate(0deg) scale(0)
+	}
+
+
+}
+
+@keyframes perfectClear2 {
+	0% {
+		opacity: 0%;
+		transform: rotate(720deg);
+	}
+
+	11% {
+		opacity: 0%;
+	}
+
+	12% {
+		opacity: 70%
+	}
+
+	13% {
+		animation-timing-function: ease-out;
+		transform: rotate(0deg) scale(1.1)
+	}
+
+	100% {
+		opacity: 0%;
+		transform: rotate(0deg) scale(2.5)
+	}
+}
+
+@keyframes board-downfall {
+	from {
+		opacity: 100%;
+		transform: translateY(0px) rotate(0deg);
+	}
+	to {
+		opacity: 100%;
+		transform: translateY(500%) rotate(180deg);
+	}
+}
+
+@font-face {
+	font-family: 'font-default';
+	font-style: normal;
+	src: url('fonts/default.ttf') format('truetype')
+}
+
+html {
+	user-select: none;
+	font-family: font-default;
+}
+
+body {
+	margin: 0 0;
+	max-height: 100%;
+	background: #000;
+	background-size: cover;
+	color: #fff;
+	align-items: center;
+	overflow: hidden;
+	text-overflow: hidden
+}
+
+#core {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center
+}
+
+#loader {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	z-index: 999;
+	position: absolute
+}
+
+#LOADING-DIV {
+	position:absolute;
+	display: flex;
+	justify-content: center;
+	right: 0;
+	bottom: 0;
+}
+
+#SandboxArea {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+gtris-text-inPlace {
+	color: #fff;
+	position: relative
+}
+
+gtris-skin-hidden {
+	position: absolute;
+	display: none;
+	background: #883;
+}
+
+gtris-tetrion-padding {
+	display: flex;
+	justify-content: center;
+}
+
+gtris-tetrion-layer {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+

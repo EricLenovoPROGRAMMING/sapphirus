@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+ 15:46 July 13, 2022
+ Gachatris Sapphirus Story Mode
+-->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Gachatris Sapphirus Alpha</title>
+	<link rel="stylesheet" href="css.css">
+	<style id=playerStyles></style>
+</head>
+
+<body>
+	<gtris-main id="core">
+		<gtris-placement id="SandboxArea">
+		</gtris-placement>
+		<gtris-loader id="loader">
+			<gtris-loading-div id="LOADING-DIV">
+				<gtris-loading-text>Now Loading...</gtris-loading-text>
+			</gtris-loading-div>
+		</gtris-loader>
+	</gtris-main>
+	<gtris-skin-hidden>
+		<img id="SkinImage" />
+		<canvas id="SkinCanvas"></canvas>
+	</gtris-skin-hidden>
+	<gtris-template style="display:none" id="playerTemplate">
+	<gtris-tetrion id="PNUMBER-Tetrion">
+		<gtris-tetrion-padding>
+			<gtris-body id="PNUMBER-Body">
+				<gtris-placement id="PNUMBER-LP">
+					<gtris-hand>
+						<gtris-placeholder id="PNUMBER-HOLDP">
+							<gtris-text-inPlace id="PNUMBER-HOLD">HOLD</gtris-text-inPlace>
+						</gtris-placeholder>
+						<canvas id="PNUMBER-CANVAS-HOLD"></canvas>
+					</gtris-hand>
+				</gtris-placement>
+				<gtris-playField id="PNUMBER-FIELD">
+					<img id="PNUMBER-FIELD-IMAGE" />
+					<canvas id="PNUMBER-CANVAS-FIELD"></canvas>
+					<canvas id="PNUMBER-CANVAS-PIECE"></canvas>
+				</gtris-playField>
+				<gtris-placement id="PNUMBER-RP">
+					<gtris-hand>
+						<gtris-placeholder id="PNUMBER-NEXTP">
+							<gtris-text-inPlace id="PNUMBER-NEXT">NEXT</gtris-text-inPlace>
+						</gtris-placeholder>
+						<canvas id="PNUMBER-CANVAS-NEXT"></canvas>
+					</gtris-hand>
+					<canvas id="PNUMBER-CANVAS-QUEUE"></canvas>
+				</gtris-placement>
+				<gtris-body-layer id="PNUMBER-BODY-LAYER">
+					<gtris-clearTexts id="PNUMBER-CLEARTEXTS">
+						<gtris-clearTexts-tSpin id="PNUMBER-CLEARTEXT-SPIN">Spin</gtris-clearTexts-tSpin>
+						<gtris-clearTexts-regular id="PNUMBER-CLEARTEXT-REGULAR">Double</gtris-clearTexts-regular>
+						<gtris-clearTexts-b2b id="PNUMBER-CLEARTEXT-B2B">Back-to-back x3</gtris-clearTexts-b2b>
+						<gtris-clearTexts-ren id="PNUMBER-CLEARTEXT-REN">2 REN</gtris-clearTexts-ren>
+					</gtris-clearTexts>
+				</gtris-body-layer>
+			</gtris-body>
+		</gtris-tetrion-padding>
+		<gtris-tetrion-layer>
+			<gtris-perfectClearDiv id="PNUMBER-PCDIV">
+				<gtris-perfectClear id="PNUMBER-PERFECTCLEAR1">Perfect<br />Clear</gtris-perfectClear>
+				<gtris-perfectClear id="PNUMBER-PERFECTCLEAR2">Perfect<br />Clear</gtris-perfectClear>
+			</gtris-perfectClearDiv>
+		</gtris-tetrion-layer>
+	</gtris-tetrion>
+	</gtris-template>
+	<gtris-style-template style="display:none" id="playerTemplateStyles">
+		#PNUMBER-Tetrion {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		height: 100%;
+		width: 50%
+		}
+
+		#PNUMBER-Body {
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		}
+
+		#PNUMBER-BODY-LAYER {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		}
+
+		#PNUMBER-CLEARTEXTS {
+		position: absolute;
+		width: 100%;
+		display: grid;
+		grid-gap: 0.1em
+		}
+
+		#PNUMBER-CLEARTEXT-SPIN {
+		position: relative;
+		width: 100%;
+		height: 0.7em;
+		text-align: right;
+		display: block;
+		opacity: 0%;
+		font-size: 0.7em;
+		animation-timing-function: ease-out;
+		animation-duration: 2.2s;
+		}
+
+		#PNUMBER-CLEARTEXT-REGULAR {
+		position: relative;
+		width: 100%;
+		height: 1.2em;
+		text-align: right;
+		display: block;
+		opacity: 0%;
+		font-size: 1.2em;
+		animation-name: none;
+		animation-timing-function: ease-out;
+		animation-duration: 2.2s;
+		}
+
+		#PNUMBER-CLEARTEXT-B2B {
+		position: relative;
+		width: 100%;
+		height: 0.6em;
+		text-align: right;
+		opacity: 0%;
+		font-size: 0.6em;
+		animation-timing-function: ease-out;
+		animation-duration: 2.2s;
+		}
+
+		#PNUMBER-CLEARTEXT-REN {
+		position: relative;
+		width: 100%;
+		height: 1.1em;
+		text-align: right;
+		opacity: 0%;
+		font-size: 1.1em;
+		transition: opacity 0.3s ease-out,
+		letter-spacing 0.3s ease-out;
+		}
+
+		#PNUMBER-LP {
+		height: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column
+		}
+
+		#PNUMBER-HOLDP {
+		width: 100%;
+		background: #50A;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		}
+
+		#PNUMBER-CANVAS-HOLD {
+		background: #333;
+		}
+
+		#PNUMBER-FIELD {
+		position: relative;
+		display: block;
+		border: 0.2em solid #50a;
+		}
+
+		#PNUMBER-FIELD-IMAGE {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		}
+
+		#PNUMBER-CANVAS-PIECE {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		}
+
+		#PNUMBER-CANVAS-FIELD {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		}
+
+		#PNUMBER-RP {
+		height: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column
+		}
+
+		#PNUMBER-NEXTP {
+		width: 100%;
+		background: #50A;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		}
+
+		#PNUMBER-CANVAS-NEXT {
+		background: #333;
+		display: flex;
+		}
+
+		#PNUMBER-CANVAS-QUEUE {
+		background: linear-gradient(to bottom, #333, rgba(66, 66, 66, 0));
+		position: relative
+		}
+
+		#PNUMBER-PCDIV {
+		position: absolute;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		}
+
+		#PNUMBER-PERFECTCLEAR1,
+		#PNUMBER-PERFECTCLEAR2 {
+		font-size: 3em;
+		position: absolute;
+		opacity: 0%;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-duration: 4s;
+		text-align: center
+		}
+	</gtris-style-template>
+	<script src="app.js" type="text/javascript"></script>
+</body>
+
+</html>
